@@ -17,13 +17,17 @@ const MyProfile = () => {
   const [link, setLink] = useState("");
   const [publicName, setPublicName] = useState("");
   const [isPublic, setIsPublic] = useState(false);
+  const [currentUrl, setCurrentUrl] = useState('');
+
+  useEffect(() => {
+    setCurrentUrl(window.location.href);
+  }, []);
 
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch(`/api/users/${session?.user.id}/friends`);
       const data = await response.json();
 
-      const currentUrl = window.location.href;
       if (window.URL) {
         const url = new URL(currentUrl);
         const baseUrl = `${url.origin}`;
