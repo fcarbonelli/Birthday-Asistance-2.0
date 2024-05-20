@@ -45,7 +45,7 @@ const MyProfile = () => {
       const data = await response.json();
 
       if(data.isPublic) {
-        const currentUrl = window.location.href;
+        //const currentUrl = window.location.href;
         const baseUrl = currentUrl.slice(0, currentUrl.lastIndexOf('/'));
         setLink(baseUrl +"/invite/"+data.link);
         setPublicName(data.name);

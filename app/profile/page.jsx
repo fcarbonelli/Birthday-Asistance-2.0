@@ -13,13 +13,19 @@ const MyProfile = () => {
   const [myPosts, setMyPosts] = useState([]);
   const [link, setLink] = useState("");
 
+  const [currentUrl, setCurrentUrl] = useState('');
+
+  useEffect(() => {
+    setCurrentUrl(window.location.href);
+  }, []);
+
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch(`/api/users/${session?.user.id}/friends`);
       const data = await response.json();
 
       //setMyPosts(data.friends);
-      const currentUrl = window.location.href;
+      //const currentUrl = window.location.href;
       if (window.URL) {
         const url = new URL(currentUrl);
         const baseUrl = `${url.origin}`;
