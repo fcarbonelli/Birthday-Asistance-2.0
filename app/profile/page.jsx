@@ -20,8 +20,14 @@ const MyProfile = () => {
 
       //setMyPosts(data.friends);
       const currentUrl = window.location.href;
-      const baseUrl = currentUrl.slice(0, currentUrl.lastIndexOf('/'));
-      setLink(baseUrl +"/invite/"+data.link);
+      if (window.URL) {
+        const url = new URL(currentUrl);
+        const baseUrl = `${url.origin}`;
+        setLink(baseUrl + "/invite/" + data.link);
+      } else {
+        const baseUrl = currentUrl.split('/')[0];
+        setLink(baseUrl + "/invite/" + data.link);
+      }
     };
 
     if (session?.user.id) fetchPosts();
