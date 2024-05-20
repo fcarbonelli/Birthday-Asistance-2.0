@@ -2,6 +2,7 @@ import "@styles/globals.css";
 
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
   title: "Birthday Assistance",
@@ -14,6 +15,7 @@ const RootLayout = ({ children }) => (
       <link rel="Icon" href="/favicon/favicon.ico"/>
     </head>
     <body>
+      <Analytics />
       <Provider>
         <div className='main'>
           <div className='gradient' />
