@@ -20,11 +20,7 @@ const MyProfile = () => {
 
       //setMyPosts(data.friends);
       const currentUrl = process.env.NEXT_PUBLIC_BASE_URL;
-      if (window.URL) {
-        setLink(currentUrl + "/invite/" + data.link);
-      } else {
-        setLink(currentUrl + "/invite/" + data.link);
-      }
+      setLink(currentUrl + "/invite/" + data.link);
     };
 
     if (session?.user.id) fetchPosts();

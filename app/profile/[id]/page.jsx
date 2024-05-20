@@ -24,11 +24,7 @@ const MyProfile = () => {
       const data = await response.json();
 
       const currentUrl = process.env.NEXT_PUBLIC_BASE_URL;
-      if (window.URL) {
-        setLink(currentUrl + "/invite/" + data.link);
-      } else {
-        setLink(currentUrl + "/invite/" + data.link);
-      }
+      setLink(currentUrl + "/invite/" + data.link);
       setPublicName("");
       setIsPublic(data.isPublic);
     };

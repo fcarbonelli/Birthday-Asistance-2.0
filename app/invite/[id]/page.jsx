@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 
@@ -62,13 +62,15 @@ const CreatePrompt = () => {
   return (
     <>
       {!sent ? (
-        <Form
-          username={name}
-          friend={friend}
-          setFriend={setFriend}
-          submitting={submitting}
-          handleSubmit={addFriend}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Form
+            username={name}
+            friend={friend}
+            setFriend={setFriend}
+            submitting={submitting}
+            handleSubmit={addFriend}
+          />
+        </Suspense>
       ) : (
         <section className='w-full max-w-full flex-start flex-col'>
           <h1 className='mt-2 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl text-left'>

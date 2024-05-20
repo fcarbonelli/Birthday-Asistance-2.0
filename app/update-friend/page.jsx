@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -56,14 +56,16 @@ const UpdateFriend = () => {
   };
 
   return (
-    <EditForm
-      type='Edit'
-      friend={friend}
-      setFriend={setFriend}
-      setReceiveEmail={setReceiveEmail}
-      submitting={submitting}
-      handleSubmit={updateFriend}
-    />
+    <Suspense fallback={<div>Loading...</div>}>
+      <EditForm
+        type='Edit'
+        friend={friend}
+        setFriend={setFriend}
+        setReceiveEmail={setReceiveEmail}
+        submitting={submitting}
+        handleSubmit={updateFriend}
+      />
+    </Suspense>
   );
 };
 
