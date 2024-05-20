@@ -28,7 +28,7 @@ const MyProfile = () => {
   }, [session?.user.id]);
 
   const handleEdit = (post) => {
-    router.push(`/update-prompt?id=${post._id}`);
+    //router.push(`/update-prompt?id=${post._id}`);
   };
 
   const handleDelete = async (post) => {
@@ -36,7 +36,7 @@ const MyProfile = () => {
       "Are you sure you want to delete this prompt?"
     );
 
-    if (hasConfirmed) {
+    /*if (hasConfirmed) {
       try {
         await fetch(`/api/prompt/${post._id.toString()}`, {
           method: "DELETE",
@@ -48,7 +48,7 @@ const MyProfile = () => {
       } catch (error) {
         console.log(error);
       }
-    }
+    }*/
   };
 
   return (
