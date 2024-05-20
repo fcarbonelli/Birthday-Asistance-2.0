@@ -13,26 +13,17 @@ const MyProfile = () => {
   const [myPosts, setMyPosts] = useState([]);
   const [link, setLink] = useState("");
 
-  const [currentUrl, setCurrentUrl] = useState('');
-
-  useEffect(() => {
-    setCurrentUrl(window.location.href);
-  }, []);
-
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch(`/api/users/${session?.user.id}/friends`);
       const data = await response.json();
 
       //setMyPosts(data.friends);
-      //const currentUrl = window.location.href;
+      const currentUrl = process.env.NEXT_PUBLIC_BASE_URL;
       if (window.URL) {
-        const url = new URL(currentUrl);
-        const baseUrl = `${url.origin}`;
-        setLink(baseUrl + "/invite/" + data.link);
+        setLink(currentUrl + "/invite/" + data.link);
       } else {
-        const baseUrl = currentUrl.split('/')[0];
-        setLink(baseUrl + "/invite/" + data.link);
+        setLink(currentUrl + "/invite/" + data.link);
       }
     };
 

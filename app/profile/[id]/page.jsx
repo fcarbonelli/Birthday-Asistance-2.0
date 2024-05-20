@@ -17,24 +17,17 @@ const MyProfile = () => {
   const [link, setLink] = useState("");
   const [publicName, setPublicName] = useState("");
   const [isPublic, setIsPublic] = useState(false);
-  const [currentUrl, setCurrentUrl] = useState('');
-
-  useEffect(() => {
-    setCurrentUrl(window.location.href);
-  }, []);
 
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch(`/api/users/${session?.user.id}/friends`);
       const data = await response.json();
 
+      const currentUrl = process.env.NEXT_PUBLIC_BASE_URL;
       if (window.URL) {
-        const url = new URL(currentUrl);
-        const baseUrl = `${url.origin}`;
-        setLink(baseUrl + "/invite/" + data.link);
+        setLink(currentUrl + "/invite/" + data.link);
       } else {
-        const baseUrl = currentUrl.split('/')[0];
-        setLink(baseUrl + "/invite/" + data.link);
+        setLink(currentUrl + "/invite/" + data.link);
       }
       setPublicName("");
       setIsPublic(data.isPublic);
@@ -45,9 +38,8 @@ const MyProfile = () => {
       const data = await response.json();
 
       if(data.isPublic) {
-        //const currentUrl = window.location.href;
-        const baseUrl = currentUrl.slice(0, currentUrl.lastIndexOf('/'));
-        setLink(baseUrl +"/invite/"+data.link);
+        const currentUrl = process.env.NEXT_PUBLIC_BASE_URL;
+        setLink(currentUrl +"/invite/"+data.link);
         setPublicName(data.name);
       } else {
         router.push("/");
