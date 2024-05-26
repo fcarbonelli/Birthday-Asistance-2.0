@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import Features from "@components/Features";
+import Link from 'next/link';
 
 const Home = () => {
   const { data: session, status } = useSession();
@@ -36,6 +37,14 @@ const Home = () => {
                 <div className="flex flex-col flex-row sm:items-center">
                     <div className="mb-2 sm:mb-4">
                         <p className="text-sm text-gray-500">Made with ❤ by <a href="https://twitter.com/francis_vesica" target="_blank" rel="noopener noreferrer" class="text-blue-500">@francis_vesica</a></p>
+                    </div>
+                    <div className="flex mb-1">
+                      <Link href="/privacy">
+                        <p className="text-sm text-gray-500 mr-2 cursor-pointer">Privacy</p>
+                      </Link>
+                      <Link href="/terms">
+                        <p className="text-sm text-gray-500 cursor-pointer">Terms Of Service</p>
+                      </Link>
                     </div>
                     <div>
                         <p className="text-sm text-gray-500">© Copyright 2024. All Rights Reserved.</p>
