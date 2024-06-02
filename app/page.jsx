@@ -29,7 +29,6 @@ const Home = () => {
       <img className="rounded-lg lg:w-3/4 border" src="assets/images/bdaylanding.png"></img>
     </div>
     <Features/>
-
     <footer className=" ">
         <div className="container px-6 pb-8 mx-auto">
             <hr className="my-10 border-gray-200 " />
