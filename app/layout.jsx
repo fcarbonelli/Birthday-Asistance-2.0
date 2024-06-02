@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
   title: "Birthday Assistance",
-  description: "Discover & Share AI Prompts",
+  description: "Never Forget a Birthday",
 };
 
 const RootLayout = ({ children }) => (
